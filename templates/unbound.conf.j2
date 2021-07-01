@@ -1,0 +1,56 @@
+{{ ansible_managed | comment }}
+
+server:
+	verbosity: 1
+	use-syslog: yes
+	port: 53
+	do-ip4: yes
+	do-ip6: no
+	do-udp: yes
+	do-tcp: yes
+	do-daemonize: yes
+  ip-address: 0.0.0.0
+  access-control: 127.0.0.0/8 allow
+	access-control: ::1 allow
+	access-control: ::ffff:127.0.0.1 allow
+	access-control: 172.16.0.0/12 allow
+	access-control: 0.0.0.0/0 refuse
+	access-control: ::0/0 refuse
+
+	hide-identity: no
+	hide-version: no
+	harden-glue: yes
+	harden-dnssec-stripped: yes
+	use-caps-for-id: no
+
+	cache-min-ttl: 3600
+	cache-max-ttl: 86400
+	prefetch: yes
+	num-threads: 4
+
+	msg-cache-slabs: 4
+	rrset-cache-slabs: 4
+	infra-cache-slabs: 4
+	key-cache-slabs: 4
+	rrset-cache-size: 256m
+	msg-cache-size: 128m
+	so-rcvbuf: 1m
+
+	private-address: 10.0.0.0/8
+	private-address: 192.168.0.0/16
+	private-address: 169.254.0.0/16
+  private-address: 172.16.0.0/12
+	private-address: fd00::/8
+	private-address: fe80::/10
+	private-address: ::ffff:0:0/96
+	private-domain: "tetragir.com"
+
+	unwanted-reply-threshold: 10000000
+	do-not-query-localhost: no
+
+	include: "/usr/local/etc/unbound/adblock.conf"
+	include: "/usr/local/etc/unbound/localdns.conf"
+	include: "/usr/local/etc/unbound/block.conf"
+
+remote-control:
+  control-enable: no

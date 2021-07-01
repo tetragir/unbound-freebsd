@@ -1,0 +1,17 @@
+{{ ansible_managed | comment }}
+
+local-zone: "{{ localdomain }}." static
+
+# Forward entries
+{% for entry in dns %}
+{% for key, value in entry.items() %}
+local-data: "{{ key }}.{{ localdomain }}. IN A {{ value }}"
+{% endfor %}
+{% endfor %}
+
+# Reverse entries
+{% for entry in dns %}
+{% for key, value in entry.items() %}
+local-data-ptr: "{{ value }} {{ key }}.{{ localdomain }}"
+{% endfor %}
+{% endfor %}
