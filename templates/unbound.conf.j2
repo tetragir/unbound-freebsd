@@ -39,7 +39,7 @@ server:
   private-address: fd00::/8
   private-address: fe80::/10
   private-address: ::ffff:0:0/96
-  private-domain: "tetragir.com"
+  private-domain: "{{ localdomain }}"
   unwanted-reply-threshold: 10000000
   do-not-query-localhost: no
   include: "/usr/local/etc/unbound/adblock.conf"
