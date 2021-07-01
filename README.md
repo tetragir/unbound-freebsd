@@ -10,10 +10,10 @@ Unbound is available from packages, so I installing from there.
 
 # Configuration files
 There are 4 different files for configuration:
-* localdns.conf - In this file, list all internal hostnames. Items are list items in the vars/main.yml file
-* block.conf - If there are any websites that should be blocked on top of the adblock list, they can be listed here
-* adblock.conf - This file contains all blocked domains. The file is only created with Ansible but not filled. There is a cronjob that will update this file
-* unbound.conf - The main configuration file for Unbound
+* ```localdns.conf``` - In this file, list all internal hostnames. Items are list items in the vars/main.yml file
+* ```block.conf``` - If there are any websites that should be blocked on top of the adblock list, they can be listed here
+* ```adblock.conf``` - This file contains all blocked domains. The file is only created with Ansible but not filled. There is a cronjob that will update this file
+* ```unbound.conf``` - The main configuration file for Unbound
 
 In the configuration file, there are mostly the default values are left. Queries from private IP addresses are allowed, everything else is blocked. In addition for templating the configuration files, the sample configuration is removed.
 
